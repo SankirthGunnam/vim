@@ -141,6 +141,17 @@ else
 endif
 nnoremap <leader>fb :Buffers<CR>
 
+" Terminal-insert: <C-w> is passed to the shell by default — forward window nav like Normal mode.
+tnoremap <silent> <C-w>h <C-\><C-N><C-w>h
+tnoremap <silent> <C-w>j <C-\><C-N><C-w>j
+tnoremap <silent> <C-w>k <C-\><C-N><C-w>k
+tnoremap <silent> <C-w>l <C-\><C-N><C-w>l
+tnoremap <silent> <C-w><Left> <C-\><C-N><C-w>h
+tnoremap <silent> <C-w><Right> <C-\><C-N><C-w>l
+tnoremap <silent> <C-w><Up> <C-\><C-N><C-w>k
+tnoremap <silent> <C-w><Down> <C-\><C-N><C-w>j
+tnoremap <silent> <C-w><C-w> <C-\><C-N><C-w>w
+
 nnoremap <leader><leader> :nohlsearch<CR>
 
 highlight link CocInlayHint Comment

@@ -6,7 +6,7 @@
 
 **Open cheatsheet:** `,?` · **`:VimCheatsheet`** · **`:NvimCheatsheet`**
 
-*(Also see `nvim/NVIM-CHEATSHEET.md` in this repo.)*
+*(Also see `NVIM-CHEATSHEET.md` in this directory.)*
 
 ---
 
@@ -80,6 +80,18 @@ Motion and editing behave like standard Vim. Useful reminders:
 | `leader` **`fb`** | `:Buffers` |
 
 Inside FZF (default plugin bindings): **`Ctrl‑t`** open tab **`Ctrl‑x`** split **`Ctrl‑v`** vertical split **`Enter`** default action.
+
+### Terminal split (`:terminal`)
+
+While the embedded shell has focus (**Terminal-insert** mode), Neovim would otherwise send keys to the shell. These extra maps mirror normal **`Ctrl+w`** window moves:
+
+| Key | Action |
+|-----|--------|
+| `Ctrl+w` `h`/`j`/`k`/`l` | Move focus to adjacent window |
+| `Ctrl+w` arrow keys | Same (↑ `k`, ↓ `j`, ← `h`, → `l`) |
+| `Ctrl+w` `Ctrl+w` | Next window (cycle) |
+
+`Ctrl+\` `Ctrl+N` still leaves Terminal-insert → **Terminal-Normal** mode (scroll/copy, `:q`, etc.). From Normal mode elsewhere, **`Ctrl+w`** works as usual.
 
 ---
 
