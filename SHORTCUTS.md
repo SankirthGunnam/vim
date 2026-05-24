@@ -56,7 +56,7 @@ Motion and editing behave like standard Vim. Useful reminders:
 | `v` `V` `<C-v>` | Char / line / block visual |
 | `o` | Swap anchor in visual |
 
-**Shift+C reminder:** **`C`** = change from cursor to end of line (`c$`). Your config avoids remapping it; use **`?`** for cheatsheet.
+**Shift+C reminder:** **`C`** = change from cursor to end of line (`c$`). Your config avoids remapping it; use **`,?`** (`leader` `?`) for the cheatsheet.
 
 ---
 
