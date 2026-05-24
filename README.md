@@ -1,6 +1,6 @@
 # Neovim configuration
 
-**Maintained configs** for **[SankirthGunnam/vim](https://github.com/SankirthGunnam/vim)** (**Neovim only** going forward): **vim-plug**, **CoC** (clangd / pyright / json), **fzf**, **NERDTree**, **Airline**, Polyglot packs, plus **nvim-dap** (C/C++/Python, STM32 + OpenOCD).
+**Maintained configs** for **[SankirthGunnam/vim](https://github.com/SankirthGunnam/vim)** (**Neovim only** going forward): **vim-plug**, **CoC** (clangd / pyright / json), **fzf**, **NERDTree**, **vim-fugitive**, **Airline**, Polyglot packs, plus **nvim-dap** (C/C++/Python, STM32 + OpenOCD).
 
 Legacy classic-Vim **`~/.vimrc`** snapshots live under [`archive/`](archive/) only; Git history keeps every prior commit unchanged.
 

@@ -61,14 +61,23 @@ Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:DapTerminate`, `:DapStepOve
 
 **STM32 / OpenOCD:** Start OpenOCD with GDB server on **port 3333**, pick config **“Attach: OpenOCD (STM32, :3333)”**, enter path to your **ELF with debug symbols** (`arm-none-eabi-gcc` build).
 
-## FZF / tree
+## FZF / tree / Git (vim-fugitive)
 
 | Key | Action |
 |-----|--------|
+| Ctrl+P | Files |
+| Ctrl+Shift+F | Ripgrep workspace (`rg` required) |
+| Ctrl+Shift+P | `:Commands` (fuzzy Ex commands) |
+| Ctrl+N | NERDTree toggle |
+| ,nf | NERDTree find current file |
 | ,e | NERDTree toggle |
 | ,ff | Files |
 | ,fg | Ripgrep (`rg`) or `:Lines` |
 | ,fb | Buffers |
+| ,gs | `:Git` status |
+| ,gc | `:Git commit` |
+| ,gp / ,gl | push / pull |
+| ,gb / ,gD / ,gL | blame / diff / log |
 
 ## Other
 
@@ -80,6 +89,7 @@ Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:DapTerminate`, `:DapStepOve
 
 - **Commentary:** `gcc` (line), `gc` (motion/visual)
 - **Surround:** `ys`, `cs`, `ds`
+- **Fugitive:** **`:help fugitive`** (`,gs` status, buffer maps in `:Git`)
 
 ## Inspect all mappings (built-in)
 

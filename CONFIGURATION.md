@@ -1,6 +1,6 @@
 # Configuration overview (Neovim)
 
-Portable Neovim config snapshot: **C/C++** and **Python**, **vim-plug**, **coc.nvim**, **fzf**, **NERDTree**, **vim-airline**, **vim-polyglot**, plus **nvim-dap** (Python + GDB, including STM32/OpenOCD attach).
+Portable Neovim config snapshot: **C/C++** and **Python**, **vim-plug**, **coc.nvim**, **fzf**, **NERDTree**, **vim-fugitive**, **vim-airline**, **vim-polyglot**, plus **nvim-dap** (Python + GDB, including STM32/OpenOCD attach).
 
 Legacy classic-Vim **`~/.vimrc`** content is archived as [`archive/legacy-dot-vimrc`](archive/legacy-dot-vimrc); it is **not maintained** alongside `nvim/` on `main`.
 
@@ -8,12 +8,12 @@ Legacy classic-Vim **`~/.vimrc`** content is archived as [`archive/legacy-dot-vi
 
 ## Git integration (inside the editor)
 
-**No Git-from-editor plugins** are configured:
+**No Git UI beyond fugitive** (no gitsigns lazygit — optional add-ons).
 
-- Not installed: vim-fugitive, gitsigns.nvim, lazygit.nvim, etc.
-- **`vim-polyglot`** supplies **syntax** for Git file types (`gitcommit`, `gitconfig`, `.gitignore`, …) only.
+- **vim-fugitive** supplies **`:Git …`** and buffer-local maps in status/diff UIs; quick **Normal-mode** starts: **`,gs`**, **`,gc`**, **`,gp`**, **`,gl`**, **`,gb`**, **`,gD`**, **`,gL`** (see **SHORTCUTS.md**).
+- **`vim-polyglot`** still adds **syntax** for commit messages, `.gitignore`, etc.
 
-**Ripgrep** (`rg`) powers **`,fg`** when installed.
+**Ripgrep** (`rg`) powers **`Ctrl+Shift+F`**, **`,fg`**, and fugitive’s pickers when used from Git buffers.
 
 ---
 
@@ -56,6 +56,7 @@ Plugins install under **`stdpath('data')/plugged`** (typically **`~/.local/share
 | `vim-airline/vim-airline` | Status/tab line |
 | `junegunn/fzf`, `junegunn/fzf.vim` | Fuzzy finder UI |
 | `preservim/nerdtree` | File tree |
+| `tpope/vim-fugitive` | **`:Git`** / blame / staging (`:help fugitive`) |
 | `sheerun/vim-polyglot` | Syntax packs |
 | `neoclide/coc.nvim` (release branch) | LSP / completion / diagnostics |
 

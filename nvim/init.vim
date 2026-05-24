@@ -63,6 +63,8 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'preservim/nerdtree'
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -132,6 +134,18 @@ endfunction
 nnoremap <silent> <leader>? :call <SID>OpenNvimCheatsheet()<CR>
 command! -nargs=0 NvimCheatsheet call <SID>OpenNvimCheatsheet()
 
+" ----- fzf & NERDTree (comma maps + IDE-style binds) -----
+" Ctrl+P = quick open files. Ctrl+N = file tree toggle. Ctrl+Shift+F ≈ VS Code workspace search (:Rg needs ripgrep).
+" Ctrl+Shift+P = fuzzy Ex commands (:Commands). Many terminals distinguish Shift; if Ctrl+Shift+* fails, keep using ,maps.
+nnoremap <silent> <C-p> :Files<CR>
+if executable('rg')
+  nnoremap <silent> <C-S-f> :Rg<CR>
+endif
+nnoremap <silent> <C-S-p> :Commands<CR>
+
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <leader>nf :NERDTreeFind<CR>
+
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>ff :Files<CR>
 if executable('rg')
@@ -140,6 +154,15 @@ else
   nnoremap <leader>fg :Lines<CR>
 endif
 nnoremap <leader>fb :Buffers<CR>
+
+" ----- fugitive (:Git) — leaders below avoid masking CoC gd / gy / gi / gr -----
+nnoremap <silent> <leader>gs :Git<CR>
+nnoremap <silent> <leader>gc :Git commit<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gl :Git pull<CR>
+nnoremap <silent> <leader>gb :Git blame<CR>
+nnoremap <silent> <leader>gD :Git diff<CR>
+nnoremap <silent> <leader>gL :Git log<CR>
 
 " Terminal-insert: <C-w> is passed to the shell by default — forward window nav like Normal mode.
 tnoremap <silent> <C-w>h <C-\><C-N><C-w>h

@@ -70,14 +70,21 @@ Motion and editing behave like standard Vim. Useful reminders:
 
 *(`<leader>` = `,`)
 
-### FZF + NERDTree
+### FZF + NERDTree (comma maps + IDE-style)
 
 | Key | Action |
 |-----|--------|
-| `leader` **`e`** | NERDTree toggle |
-| `leader` **`ff`** | `:Files` — fuzzy find files |
-| `leader` **`fg`** | `:Rg` (if `rg` installed) · else `:Lines` in-buffer lines |
+| **`Ctrl+P`** | `:Files` — quick open files (same as VS Code) |
+| **`Ctrl+Shift+F`** | `:Rg` — repo search (**requires ripgrep** `rg`; skipped if absent) |
+| **`Ctrl+Shift+P`** | `:Commands` — fuzzy Ex commands palette |
+| **`Ctrl+N`** | NERDTree toggle |
+| `leader` **`nf`** | NERDTree **find current file** in tree |
+| `leader` **`e`** | NERDTree toggle (comma habit) |
+| `leader` **`ff`** | `:Files` |
+| `leader` **`fg`** | `:Rg` (if `rg` installed) · else `:Lines` |
 | `leader` **`fb`** | `:Buffers` |
+
+`*` **Terminal note:** **`Ctrl+Shift+F`** / **`Ctrl+Shift+P`** need a terminal/emulator that sends distinct sequences; if opening FZF behaves like plain **`Ctrl+F`** **`Ctrl+P`**, keep using **`leader`** maps (`fg`, `:Commands`).
 
 Inside FZF (default plugin bindings): **`Ctrl‑t`** open tab **`Ctrl‑x`** split **`Ctrl‑v`** vertical split **`Enter`** default action.
 
@@ -146,6 +153,22 @@ Useful CoC commands (type **`:Coc`** + Tab): **`:CocCommand`**, **`:CocRestart`*
 
 Repeat supported operations with **`vim-repeat`**: **``.**
 
+### vim-fugitive (`:Git`)
+
+| Key | Action |
+|-----|--------|
+| `leader` **`gs`** | `:Git` — status / stage / commit hub |
+| `leader` **`gc`** | `:Git commit` |
+| `leader` **`gp`** | `:Git push` |
+| `leader` **`gl`** | `:Git pull` |
+| `leader` **`gb`** | `:Git blame` (current buffer) |
+| `leader` **`gD`** | `:Git diff` |
+| `leader` **`gL`** | `:Git log` |
+
+**CoC preserved:** **`gd`**, **`gy`**, **`gi`**, **`gr`** stay LSP (not rebound for Git).
+
+Explore buffers opened by fugitive (`:Git`, diff splits, etc.). **`:help fugitive`** for maps inside those buffers (`s` stage, `-`/`=` toggles in status, …).
+
 ---
 
 ## nvim-dap (`lua/dap-setup.lua`)
@@ -190,4 +213,4 @@ Inside Neovim:
 
 ## Git
 
-There are **no** Vim keybindings for `:Git`, `:Gdiff`, blame, hunks, etc. Use the terminal **`git`** CLI (or install **vim-fugitive** / **gitsigns** later).
+Handled with **vim-fugitive** (`leader` `g*` maps in **SHORTCUTS.md** — status, blame, pull, …). Prefer **`:Git …`** and **`:help fugitive`** for buffer-local keys (`s` stage in status, etc.).
