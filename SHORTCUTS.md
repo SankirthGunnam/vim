@@ -1,10 +1,10 @@
 # Neovim shortcuts
 
-**Leader:** `,` (comma)
+**Leader:** **`Space`** (**`<Space>`**)
 
 Configs mirror **`nvim/`** in this repo into **`~/.config/nvim/`**. **nvim-dap** lives in **`lua/dap-setup.lua`**.
 
-**Open quick sheet:** **`,?`** · **`:NvimCheatsheet`**
+**Open quick sheet:** **`<Space>` `?`** · **`:NvimCheatsheet`**
 
 *(Symlink **`NVIM-CHEATSHEET.md`** beside **`init.vim`**, matching this repo layout.)*
 
@@ -56,7 +56,7 @@ Motion and editing behave like standard Vim. Useful reminders:
 | `v` `V` `<C-v>` | Char / line / block visual |
 | `o` | Swap anchor in visual |
 
-**Shift+C reminder:** **`C`** = change from cursor to end of line (`c$`). Your config avoids remapping it; use **`,?`** (`leader` `?`) for the cheatsheet.
+**Shift+C reminder:** **`C`** = change from cursor to end of line (`c$`). Your config avoids remapping it; use **`<Space>` `?`** for the cheatsheet.
 
 ---
 
@@ -66,25 +66,25 @@ Motion and editing behave like standard Vim. Useful reminders:
 
 | Key | Action |
 |-----|--------|
-| `leader` **`leader`** (`,,`) | `:nohlsearch` — clear search highlight |
+| **`<Space>` `<Space>`** | `:nohlsearch` — clear search highlight |
 
-*(`<leader>` = `,`)
+*(`<leader>` = **`Space`**) · **`Space`** alone is **`<NOP>`**; **`Space`** **`Space`** runs `:nohlsearch`.)*
 
-### FZF + NERDTree (comma maps + IDE-style)
+### FZF + NERDTree (leader maps + Ctrl+Shift combos)
 
 | Key | Action |
 |-----|--------|
-| **`Ctrl+P`** | `:Files` — quick open files (same as VS Code) |
+| **`leader` `p`** (**`<Space>p`**) | `:Files` — quick open |
 | **`Ctrl+Shift+F`** | `:Rg` — repo search (**requires ripgrep** `rg`; skipped if absent) |
 | **`Ctrl+Shift+P`** | `:Commands` — fuzzy Ex commands palette |
 | **`Ctrl+N`** | NERDTree toggle |
 | `leader` **`nf`** | NERDTree **find current file** in tree |
-| `leader` **`e`** | NERDTree toggle (comma habit) |
-| `leader` **`ff`** | `:Files` |
+| `leader` **`e`** | NERDTree toggle (**`<Space>e`**) |
+| `leader` **`ff`** | `:Files` (**`<Space>ff`**, alternate to **`p`**) |
 | `leader` **`fg`** | `:Rg` (if `rg` installed) · else `:Lines` |
 | `leader` **`fb`** | `:Buffers` |
 
-`*` **Terminal note:** **`Ctrl+Shift+F`** / **`Ctrl+Shift+P`** need a terminal/emulator that sends distinct sequences; if opening FZF behaves like plain **`Ctrl+F`** **`Ctrl+P`**, keep using **`leader`** maps (`fg`, `:Commands`).
+`*` **Terminal note:** **`Ctrl+Shift+F`** / **`Ctrl+Shift+P`** depend on terminal escape sequences; if they fail, use **`<Space>fg`**, **`<Space>p`** (`:Files`), and **`:Commands`.*
 
 Inside FZF (default plugin bindings): **`Ctrl‑t`** open tab **`Ctrl‑x`** split **`Ctrl‑v`** vertical split **`Enter`** default action.
 
@@ -206,7 +206,7 @@ Inside Neovim:
 :vmap
 :imap
 :command
-:verbose map <leader>ff
+:verbose map <leader>p
 ```
 
 ---

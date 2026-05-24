@@ -10,10 +10,10 @@ Legacy classic-Vim **`~/.vimrc`** content is archived as [`archive/legacy-dot-vi
 
 **No Git UI beyond fugitive** (no gitsigns lazygit — optional add-ons).
 
-- **vim-fugitive** supplies **`:Git …`** and buffer-local maps in status/diff UIs; quick **Normal-mode** starts: **`,gs`**, **`,gc`**, **`,gp`**, **`,gl`**, **`,gb`**, **`,gD`**, **`,gL`** (see **SHORTCUTS.md**).
+- **vim-fugitive** supplies **`:Git …`** and buffer-local maps in status/diff UIs; quick **Normal-mode** wraps: **`<Space>gs`**, **`<Space>gc`**, **`<Space>gp`**, **`<Space>gl`**, **`<Space>gb`**, **`<Space>gD`**, **`<Space>gL`** (see **SHORTCUTS.md**).
 - **`vim-polyglot`** still adds **syntax** for commit messages, `.gitignore`, etc.
 
-**Ripgrep** (`rg`) powers **`Ctrl+Shift+F`**, **`,fg`**, and fugitive’s pickers when used from Git buffers.
+**Ripgrep** (`rg`) powers **`Ctrl+Shift+F`**, **`<Space>fg`**, and fugitive’s pickers when used from Git buffers.
 
 ---
 
@@ -24,7 +24,7 @@ Legacy classic-Vim **`~/.vimrc`** content is archived as [`archive/legacy-dot-vi
 | `nvim/init.vim` | `~/.config/nvim/init.vim` |
 | `nvim/lua/dap-setup.lua` | `~/.config/nvim/lua/dap-setup.lua` |
 | `nvim/coc-settings.json` | `~/.config/nvim/coc-settings.json` |
-| `nvim/NVIM-CHEATSHEET.md` | `~/.config/nvim/NVIM-CHEATSHEET.md` (**`,?`** opens it) |
+| `nvim/NVIM-CHEATSHEET.md` | `~/.config/nvim/NVIM-CHEATSHEET.md` (**`<Space>?`** opens it) |
 
 Optional symlink **SHORTCUTS.md** / **CONFIGURATION.md** into `~/.config/nvim/` for local reading—commands **`:NvimCheatsheet`** only open `NVIM-CHEATSHEET.md`.
 
@@ -34,7 +34,7 @@ Optional symlink **SHORTCUTS.md** / **CONFIGURATION.md** into `~/.config/nvim/` 
 
 | Setting | Value |
 |---------|--------|
-| `mapleader` / `maplocalleader` | `,` (comma) |
+| `mapleader` / `maplocalleader` | **`<Space>`** (see `nnoremap <Space> <NOP>` in **`init.vim`**) |
 
 **vim-plug** bootstraps by downloading **`plug.vim`** with **`curl`** if missing:
 
@@ -116,7 +116,7 @@ Needs **Node.js**:
 | `:CocFormat` | Format buffer |
 | `:NvimCheatsheet` | Split-open `NVIM-CHEATSHEET.md` |
 
-**`,?`** → same cheatsheet split.
+**`<Space>?`** → same cheatsheet split.
 
 ---
 

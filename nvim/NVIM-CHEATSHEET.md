@@ -1,12 +1,12 @@
 # Neovim cheat sheet (CoC)
 
-**Leader:** `,` (comma) · Open this sheet: **`,?`** or **`:NvimCheatsheet`**
+**Leader:** **`<Space>`** (`mapleader`; lone Space → **`<NOP>`**) · cheat sheet: **`<Space>?`** · **`:NvimCheatsheet`**
 
-**Debugging** uses **nvim-dap** (maps below—need `lua/dap-setup.lua` loaded via `init.vim`).
+**Debugging:** **nvim-dap** (needs `lua/dap-setup.lua` via `init.vim`).
 
 ## Why not Shift+C?
 
-Normal-mode **`C`** (Shift+c) is built-in: **change text from cursor to end of line** (`c$`). Remapping it breaks standard Vim; use `,?` (`<leader>?`) instead.
+Normal **`C`** = **`c$`**. Prefer **`<Space>?`** (`<leader>?`) instead of stealing **`C`** for cheatsheet.
 
 ## CoC — completion (insert mode)
 
@@ -19,6 +19,8 @@ Normal-mode **`C`** (Shift+c) is built-in: **change text from cursor to end of l
 
 ## CoC — LSP / diagnostics (normal)
 
+Chord keys below = **`Space`** + rest (e.g. **`rn`** = **`<Space>rn`**).
+
 | Key | Action |
 |-----|--------|
 | gd | Definition |
@@ -27,71 +29,68 @@ Normal-mode **`C`** (Shift+c) is built-in: **change text from cursor to end of l
 | gr | References |
 | K | Hover docs |
 | [g / ]g | Prev / next diagnostic |
-| ,rn | Rename symbol |
-| ,f | Format (selection or operator) |
-| :CocFormat | Format whole buffer |
+| `Space` rn | Rename symbol |
+| `Space` f | Format selection / operator |
+| :CocFormat | Format buffer |
 
 ## Float scroll
 
 | Key | Action |
 |-----|--------|
-| Ctrl+d / Ctrl+u | Scroll CoC float (else normal scroll) |
+| Ctrl+d / Ctrl+u | Scroll CoC float (else half-page scroll) |
 
 ## Debugging (nvim-dap)
 
-Pick a configuration when prompted (`:DapContinue` or map below). **Python** uses **debugpy** (`python3 -m debugpy`). **C/C++** uses **GDB 14+** DAP mode (`--interpreter=dap`); **`gdb-multiarch`** is used when installed (better for ARM/STM32 attach).
+| Key | Action |
+|-----|--------|
+| `Space` dc | Continue / pick config |
+| `Space` dC | Run last session |
+| `Space` db | Toggle breakpoint |
+| `Space` dB | Conditional breakpoint |
+| `Space` dl | Clear breakpoints |
+| `Space` dj | Step over |
+| `Space` di | Step into |
+| `Space` do | Step out |
+| `Space` dr | Restart |
+| `Space` dq | Terminate |
+| `Space` du | Toggle dap-ui |
+| `Space` dh | Hover widgets |
+| `Space` de | Eval expression |
+
+Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:help dap-commands`.
+
+**STM32 / OpenOCD:** GDB on **`:3333`**, firmware ELF with symbols.
+
+## FZF / tree / Git (`:Git`)
 
 | Key | Action |
 |-----|--------|
-| ,dc | Continue / pick config & start |
-| ,dC | Run last debug session |
-| ,db | Toggle breakpoint |
-| ,dB | Conditional breakpoint |
-| ,dl | Clear breakpoints |
-| ,dj | Step over |
-| ,di | Step into |
-| ,do | Step out |
-| ,dr | Restart |
-| ,dq | Terminate |
-| ,du | Toggle **dap-ui** (scopes, stacks, watches, REPL) |
-| ,dh | Hover widgets |
-| ,de | Eval expression (normal/visual) |
-
-Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:DapTerminate`, `:DapStepOver`, … (`:help dap-commands`).
-
-**STM32 / OpenOCD:** Start OpenOCD with GDB server on **port 3333**, pick config **“Attach: OpenOCD (STM32, :3333)”**, enter path to your **ELF with debug symbols** (`arm-none-eabi-gcc` build).
-
-## FZF / tree / Git (vim-fugitive)
-
-| Key | Action |
-|-----|--------|
-| Ctrl+P | Files |
-| Ctrl+Shift+F | Ripgrep workspace (`rg` required) |
-| Ctrl+Shift+P | `:Commands` (fuzzy Ex commands) |
+| `Space` p | Files |
+| Ctrl+Shift+F | Rg (needs **rg**) |
+| Ctrl+Shift+P | `:Commands` |
 | Ctrl+N | NERDTree toggle |
-| ,nf | NERDTree find current file |
-| ,e | NERDTree toggle |
-| ,ff | Files |
-| ,fg | Ripgrep (`rg`) or `:Lines` |
-| ,fb | Buffers |
-| ,gs | `:Git` status |
-| ,gc | `:Git commit` |
-| ,gp / ,gl | push / pull |
-| ,gb / ,gD / ,gL | blame / diff / log |
+| `Space` nf | NERDTreeFind |
+| `Space` e | NERDTree toggle |
+| `Space` ff | Files (alternate) |
+| `Space` fg | Rg · else `:Lines` |
+| `Space` fb | Buffers |
+| `Space` gs / gc | `:Git` / commit |
+| `Space` gp / gl | push / pull |
+| `Space` gb / gD / gL | blame / diff / log |
 
 ## Other
 
 | Key | Action |
 |-----|--------|
-| ,, | Clear search highlight (`<leader><leader>`) |
+| `Space` `Space` | Clear search highlights |
 
 ## Plugins (short)
 
-- **Commentary:** `gcc` (line), `gc` (motion/visual)
+- **Commentary:** `gcc`, `gc` + motion
 - **Surround:** `ys`, `cs`, `ds`
-- **Fugitive:** **`:help fugitive`** (`,gs` status, buffer maps in `:Git`)
+- **Fugitive:** `:help fugitive`
 
-## Inspect all mappings (built-in)
+## Inspect mappings
 
 ```
 :nmap
@@ -100,6 +99,6 @@ Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:DapTerminate`, `:DapStepOve
 :command
 ```
 
-## If you see `E518` / `printf("Wrong` via modelines
+## Modelines
 
-Config uses `set nomodeline` so random source lines are not parsed as Vim options.
+`set nomodeline` avoids stray `E518` from funny strings.

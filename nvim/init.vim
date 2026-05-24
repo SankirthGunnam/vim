@@ -22,8 +22,12 @@ if has('termguicolors')
   set termguicolors
 endif
 
-let mapleader = ','
-let maplocalleader = ','
+" Space leader (see :help mapleader).
+let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
+" Avoid Space acting like `l` while still allowing <Space> as prefix for chords.
+nnoremap <silent> <Space> <NOP>
+xnoremap <silent> <Space> <NOP>
 
 augroup dev_filetypes
   autocmd!
@@ -120,7 +124,7 @@ nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(
 
 command! -nargs=0 CocFormat :call CocActionAsync('format')
 
-" Shift+C is normal-mode `C` (change to end of line) — do not remap. Use <leader>? for this cheatsheet.
+" Shift+C is normal-mode `C` (change to end of line). Use <leader>? (Space then ?) for the cheatsheet.
 function! s:OpenNvimCheatsheet() abort
   let path = stdpath('config') . '/NVIM-CHEATSHEET.md'
   if !filereadable(path)
@@ -134,10 +138,9 @@ endfunction
 nnoremap <silent> <leader>? :call <SID>OpenNvimCheatsheet()<CR>
 command! -nargs=0 NvimCheatsheet call <SID>OpenNvimCheatsheet()
 
-" ----- fzf & NERDTree (comma maps + IDE-style binds) -----
-" Ctrl+P = quick open files. Ctrl+N = file tree toggle. Ctrl+Shift+F ≈ VS Code workspace search (:Rg needs ripgrep).
-" Ctrl+Shift+P = fuzzy Ex commands (:Commands). Many terminals distinguish Shift; if Ctrl+Shift+* fails, keep using ,maps.
-nnoremap <silent> <C-p> :Files<CR>
+" ----- fzf & NERDTree (leader + some Ctrl combos) -----
+" <Space>p = quick open files (was Ctrl+P). Ctrl+Shift+F / Ctrl+Shift+P if your terminal sends them.
+nnoremap <silent> <leader>p :Files<CR>
 if executable('rg')
   nnoremap <silent> <C-S-f> :Rg<CR>
 endif
