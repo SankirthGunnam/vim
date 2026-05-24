@@ -13,7 +13,7 @@ Legacy classic-Vim **`~/.vimrc`** snapshots live under [`archive/`](archive/) on
 | [`nvim/init.vim`](nvim/init.vim) | Main Neovim init |
 | [`nvim/lua/dap-setup.lua`](nvim/lua/dap-setup.lua) | DAP adapters (GDB, Python) |
 | [`nvim/coc-settings.json`](nvim/coc-settings.json) | CoC/clangd/pyright knobs |
-| [`nvim/NVIM-CHEATSHEET.md`](nvim/NVIM-CHEATSHEET.md) | Quick table (opened with **`,?`**) |
+| [`nvim/NVIM-CHEATSHEET.md`](nvim/NVIM-CHEATSHEET.md) | Quick table (opened with **`<Space>?`**) |
 | [`SHORTCUTS.md`](SHORTCUTS.md) | Full key reference |
 | [`CONFIGURATION.md`](CONFIGURATION.md) | Options / plugins overview |
 | [`archive/legacy-dot-vimrc`](archive/legacy-dot-vimrc) | Frozen classic Vim RC (unsupported) |
@@ -46,7 +46,7 @@ ln -sf ~/repos/vim/CONFIGURATION.md ~/.config/nvim/CONFIGURATION.md
 
 - **Node.js** — CoC  
 - **`clangd`** — C/C++ LSP  
-- **`rg`** — `leader`-`fg` workspace search  
+- **`rg`** — **`<Space>fg`** workspace search (`Ctrl+Shift+F` too when available)  
 - **GDB 14+** (optional **`gdb-multiarch`**) — DAP debugging  
 - **`python3 -m pip install --user debugpy`** — Python debugging (optional)
 
@@ -58,9 +58,11 @@ This repo accepts **Neovim-related** edits only; do not resurrect active classic
 
 ---
 
-## Git in the editor?
+## Leader / Git
 
-No fugitive / gitsigns integration—see [`CONFIGURATION.md`](CONFIGURATION.md).
+`<Space>` is **leader** (`mapleader`): **`<Space>p`** fuzzy files, **`<Space>?`** cheatsheet — see **`SHORTCUTS.md`**.  
+
+**vim-fugitive** is bundled; **`:Git`** and **`<Space>g…`** wrappers are documented in **`CONFIGURATION.md`** and **`SHORTCUTS.md`**.
 
 ---
 
