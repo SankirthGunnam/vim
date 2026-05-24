@@ -67,7 +67,7 @@ Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:help dap-commands`.
 |-----|--------|
 | `Space` p | Files |
 | Ctrl+Shift+F | Rg (needs **rg**) |
-| Ctrl+Shift+P | `:Commands` |
+| `Space` Shift+P (`<Space><S-p>`) | `:Commands` |
 | Ctrl+N | NERDTree toggle |
 | `Space` nf | NERDTreeFind |
 | `Space` e | NERDTree toggle |

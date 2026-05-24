@@ -138,13 +138,13 @@ endfunction
 nnoremap <silent> <leader>? :call <SID>OpenNvimCheatsheet()<CR>
 command! -nargs=0 NvimCheatsheet call <SID>OpenNvimCheatsheet()
 
-" ----- fzf & NERDTree (leader + some Ctrl combos) -----
-" <Space>p = quick open files (was Ctrl+P). Ctrl+Shift+F / Ctrl+Shift+P if your terminal sends them.
+" ----- fzf & NERDTree (leader + Ctrl+Shift where terminal supports it) -----
+" <Space>p = Files · <Space><S-p> (Shift+P) = :Commands fuzzy palette · Ctrl+Shift+F = :Rg if distinct escape.
 nnoremap <silent> <leader>p :Files<CR>
 if executable('rg')
   nnoremap <silent> <C-S-f> :Rg<CR>
 endif
-nnoremap <silent> <C-S-p> :Commands<CR>
+nnoremap <silent> <leader><S-p> :Commands<CR>
 
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 nnoremap <silent> <leader>nf :NERDTreeFind<CR>

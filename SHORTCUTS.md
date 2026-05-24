@@ -75,8 +75,8 @@ Motion and editing behave like standard Vim. Useful reminders:
 | Key | Action |
 |-----|--------|
 | **`leader` `p`** (**`<Space>p`**) | `:Files` — quick open |
+| **`leader`** **`Shift+P`** (**`<Space>P`** · **`<Space><S-p>`**) | `:Commands` — fuzzy Ex commands palette |
 | **`Ctrl+Shift+F`** | `:Rg` — repo search (**requires ripgrep** `rg`; skipped if absent) |
-| **`Ctrl+Shift+P`** | `:Commands` — fuzzy Ex commands palette |
 | **`Ctrl+N`** | NERDTree toggle |
 | `leader` **`nf`** | NERDTree **find current file** in tree |
 | `leader` **`e`** | NERDTree toggle (**`<Space>e`**) |
@@ -84,7 +84,7 @@ Motion and editing behave like standard Vim. Useful reminders:
 | `leader` **`fg`** | `:Rg` (if `rg` installed) · else `:Lines` |
 | `leader` **`fb`** | `:Buffers` |
 
-`*` **Terminal note:** **`Ctrl+Shift+F`** / **`Ctrl+Shift+P`** depend on terminal escape sequences; if they fail, use **`<Space>fg`**, **`<Space>p`** (`:Files`), and **`:Commands`.*
+`*` **Terminal note:** **`Ctrl+Shift+F`** (`:Rg`) may fail in some terminals — use **`<Space>fg`**. Fuzzy **`:Commands`** is **`<Space><S-p>`** (Space + Shift+P), or type **`:Commands`**.*
 
 Inside FZF (default plugin bindings): **`Ctrl‑t`** open tab **`Ctrl‑x`** split **`Ctrl‑v`** vertical split **`Enter`** default action.
 
