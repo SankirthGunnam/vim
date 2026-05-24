@@ -41,7 +41,7 @@ Portable copies of configs from the machine where this snapshot was produced. Ta
 - Vim: `~/.vim/autoload/plug.vim`
 - Neovim: `stdpath('data')/site/autoload/plug.vim` (usually `~/.local/share/nvim/site/autoload/plug.vim`)
 
-Neovim plugins install under `stdpath('data')/plugged` (~/.local/share/nvim/plugged`).
+Neovim plugins install under `stdpath('data')/plugged` (typically `~/.local/share/nvim/plugged`).
 
 Then run `:PlugInstall` in the editor after first launch.
 
