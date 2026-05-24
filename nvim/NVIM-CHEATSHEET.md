@@ -1,8 +1,8 @@
-# Editor cheat sheet (CoC)
+# Neovim cheat sheet (CoC)
 
-**Default editor:** classic **Vim** (`~/.vimrc`). **nvim-dap** / debugging keys below apply only when using **Neovim** (`~/.config/nvim/`).
+**Leader:** `,` (comma) · Open this sheet: **`,?`** or **`:NvimCheatsheet`**
 
-**Leader:** `,` (comma) · Open this sheet: **`,?`** or **`:VimCheatsheet`** (Vim) / **`:NvimCheatsheet`** (Neovim)
+**Debugging** uses **nvim-dap** (maps below—need `lua/dap-setup.lua` loaded via `init.vim`).
 
 ## Why not Shift+C?
 
@@ -37,9 +37,7 @@ Normal-mode **`C`** (Shift+c) is built-in: **change text from cursor to end of l
 |-----|--------|
 | Ctrl+d / Ctrl+u | Scroll CoC float (else normal scroll) |
 
-## Debugging (nvim-dap — **Neovim only**)
-
-These maps work in **`nvim`**, not in classic Vim. Use **Vimspector** or terminal **gdb** if you need debugging from Vim.
+## Debugging (nvim-dap)
 
 Pick a configuration when prompted (`:DapContinue` or map below). **Python** uses **debugpy** (`python3 -m debugpy`). **C/C++** uses **GDB 14+** DAP mode (`--interpreter=dap`); **`gdb-multiarch`** is used when installed (better for ARM/STM32 attach).
 
@@ -91,8 +89,6 @@ Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:DapTerminate`, `:DapStepOve
 :imap
 :command
 ```
-
-Project doc (if present): `.vim/.nvim/NVIM-SETUP.md`
 
 ## If you see `E518` / `printf("Wrong` via modelines
 

@@ -1,63 +1,73 @@
-# vim — dotfiles snapshot
+# Neovim configuration
 
-Configs for **[SankirthGunnam/vim](https://github.com/SankirthGunnam/vim)**: Vim + Neovim with **vim-plug**, **CoC** (clangd/pyright/json), **fzf**, **NERDTree**, **Airline**, Polyglot syntax packs. Neovim adds **nvim-dap** for C/C++/Python (+ STM32 via OpenOCD).
+**Maintained configs** for **[SankirthGunnam/vim](https://github.com/SankirthGunnam/vim)** (**Neovim only** going forward): **vim-plug**, **CoC** (clangd / pyright / json), **fzf**, **NERDTree**, **Airline**, Polyglot packs, plus **nvim-dap** (C/C++/Python, STM32 + OpenOCD).
 
-## Documents in this repo
+Legacy classic-Vim **`~/.vimrc`** snapshots live under [`archive/`](archive/) only; Git history keeps every prior commit unchanged.
 
-| File | Description |
-|------|--------------|
-| [SHORTCUTS.md](SHORTCUTS.md) | Keybindings reference (built-ins + plugins) |
-| [CONFIGURATION.md](CONFIGURATION.md) | Options, plugins, CoC/DAP, **Git/not-Git** note |
+---
 
-## Quick install
+## Repo layout
 
-1. Clone this repo somewhere (e.g. `~/repos/vim`).
+| Path | Purpose |
+|------|---------|
+| [`nvim/init.vim`](nvim/init.vim) | Main Neovim init |
+| [`nvim/lua/dap-setup.lua`](nvim/lua/dap-setup.lua) | DAP adapters (GDB, Python) |
+| [`nvim/coc-settings.json`](nvim/coc-settings.json) | CoC/clangd/pyright knobs |
+| [`nvim/NVIM-CHEATSHEET.md`](nvim/NVIM-CHEATSHEET.md) | Quick table (opened with **`,?`**) |
+| [`SHORTCUTS.md`](SHORTCUTS.md) | Full key reference |
+| [`CONFIGURATION.md`](CONFIGURATION.md) | Options / plugins overview |
+| [`archive/legacy-dot-vimrc`](archive/legacy-dot-vimrc) | Frozen classic Vim RC (unsupported) |
 
-   ```bash
-   git clone git@github.com:SankirthGunnam/vim.git ~/repos/vim
-   ```
+---
 
-2. **Vim:** link or copy `vim/.vimrc` → `~/.vimrc`:
+## Install (symlinks)
 
-   ```bash
-   ln -sf ~/repos/vim/.vimrc ~/.vimrc
-   ```
+Clone then link into `~/.config/nvim/`:
 
-3. **Neovim:**
+```bash
+git clone git@github.com:SankirthGunnam/vim.git ~/repos/vim
+mkdir -p ~/.config/nvim/lua
+ln -sf ~/repos/vim/nvim/init.vim ~/.config/nvim/init.vim
+ln -sf ~/repos/vim/nvim/lua/dap-setup.lua ~/.config/nvim/lua/dap-setup.lua
+ln -sf ~/repos/vim/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sf ~/repos/vim/nvim/NVIM-CHEATSHEET.md ~/.config/nvim/NVIM-CHEATSHEET.md
+```
 
-   ```bash
-   mkdir -p ~/.config/nvim/lua
-   ln -sf ~/repos/vim/nvim/init.vim ~/.config/nvim/init.vim
-   ln -sf ~/repos/vim/nvim/lua/dap-setup.lua ~/.config/nvim/lua/dap-setup.lua
-   ln -sf ~/repos/vim/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
-   ln -sf ~/repos/vim/nvim/NVIM-CHEATSHEET.md ~/.config/nvim/NVIM-CHEATSHEET.md
-   ```
+On first launch **vim-plug** may bootstrap with `curl`, then `:PlugInstall`. **CoC** needs **Node**; extensions follow `g:coc_global_extensions` in `init.vim`.
 
-   On first launch, **vim-plug** may download itself via `curl`. Then run `:PlugInstall`. **CoC** needs **Node**; install `:CocInstall` bundles or rely on `g:coc_global_extensions`.
+Optional local docs (not required for `:NvimCheatsheet`):
 
-4. Dependencies (recommended):
+```bash
+ln -sf ~/repos/vim/SHORTCUTS.md ~/.config/nvim/SHORTCUTS.md
+ln -sf ~/repos/vim/CONFIGURATION.md ~/.config/nvim/CONFIGURATION.md
+```
 
-   - **Node.js** — CoC
-   - **`clangd`** — C/C++ LSP  
-   - **`rg` (ripgrep)** — for `leader+fg` project search  
-   - **Neovim + GDB 14+** — debugging; **`gdb-multiarch`** optional  
-   - **Python `debugpy`** — `python3 -m pip install --user debugpy` (optional, for nvim-dap Python)
+### Dependencies
+
+- **Node.js** — CoC  
+- **`clangd`** — C/C++ LSP  
+- **`rg`** — `leader`-`fg` workspace search  
+- **GDB 14+** (optional **`gdb-multiarch`**) — DAP debugging  
+- **`python3 -m pip install --user debugpy`** — Python debugging (optional)
+
+---
+
+## Contributing / updates
+
+This repo accepts **Neovim-related** edits only; do not resurrect active classic-Vim duplication on `main` without a deliberate decision.
+
+---
 
 ## Git in the editor?
 
-**Git is not wired into these configs** (no fugitive, gitsigns, etc.). `.gitconfig`/`core.editor` is up to you. See [CONFIGURATION.md](CONFIGURATION.md).
+No fugitive / gitsigns integration—see [`CONFIGURATION.md`](CONFIGURATION.md).
+
+---
 
 ## Updating from your machine
 
-After editing locally:
-
 ```bash
 cd ~/repos/vim
-git add .
-git commit -m "Describe your edit."
-git push origin HEAD
+git pull
+nvim +"source $MYVIMRC"
 ```
-
-## License
-
-Config files are your own usage; upstream plugins retain their respective licenses.

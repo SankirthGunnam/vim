@@ -1,74 +1,71 @@
-# Configuration overview
+# Configuration overview (Neovim)
 
-Portable copies of configs from the machine where this snapshot was produced. Targets **C/C++ and Python** with **vim-plug**, **CoC.nvim**, **fzf**, **NERDTree**, **Airline**. **Neovim** adds **nvim-dap** (Python + GDB, including STM32/OpenOCD attach).
+Portable Neovim config snapshot: **C/C++** and **Python**, **vim-plug**, **coc.nvim**, **fzf**, **NERDTree**, **vim-airline**, **vim-polyglot**, plus **nvim-dap** (Python + GDB, including STM32/OpenOCD attach).
+
+Legacy classic-Vim **`~/.vimrc`** content is archived as [`archive/legacy-dot-vimrc`](archive/legacy-dot-vimrc); it is **not maintained** alongside `nvim/` on `main`.
 
 ---
 
-## Git and Vim — are they integrated?
+## Git integration (inside the editor)
 
-**No dedicated Git-from-Vim setup** is configured.
+**No Git-from-editor plugins** are configured:
 
-- Plugins such as **vim-fugitive**, **gitsigns.nvim**, or **lazygit** are **not** installed.
-- **`core.editor`/merge tool** Git settings were **not read** here (no `~/.gitconfig` found in this environment); set them yourself if you want `git commit` to open Vim/Neovim.
-- **`vim-polyglot`** contributes **syntax highlighting** for Git-related file types (`gitcommit`, `gitconfig`, `.gitignore`, etc.) only — not Git commands inside the editor.
+- Not installed: vim-fugitive, gitsigns.nvim, lazygit.nvim, etc.
+- **`vim-polyglot`** supplies **syntax** for Git file types (`gitcommit`, `gitconfig`, `.gitignore`, …) only.
 
-**Ripgrep** (`rg`) powers project-wide search (**`,fg`**) when available; results include files under `.git/` unless excluded by `rg`/`.ignore` habits (not overridden in these configs).
+**Ripgrep** (`rg`) powers **`,fg`** when installed.
 
 ---
 
 ## File layout after install
 
-| File | Typical location | Editor |
-|------|-------------------|--------|
-| `.vimrc` | `~/.vimrc` | Vim |
-| `nvim/init.vim` | `~/.config/nvim/init.vim` | Neovim |
-| `nvim/lua/dap-setup.lua` | `~/.config/nvim/lua/dap-setup.lua` | Neovim |
-| `nvim/coc-settings.json` | `~/.config/nvim/coc-settings.json` | Neovim (CoC) |
-| `nvim/NVIM-CHEATSHEET.md` | `~/.config/nvim/NVIM-CHEATSHEET.md` | Both (opened by **`,?`**) |
+| Repo file | Install to |
+|-----------|-------------|
+| `nvim/init.vim` | `~/.config/nvim/init.vim` |
+| `nvim/lua/dap-setup.lua` | `~/.config/nvim/lua/dap-setup.lua` |
+| `nvim/coc-settings.json` | `~/.config/nvim/coc-settings.json` |
+| `nvim/NVIM-CHEATSHEET.md` | `~/.config/nvim/NVIM-CHEATSHEET.md` (**`,?`** opens it) |
 
-**Note:** Vim’s `.vimrc` opens the cheatsheet at `~/.config/nvim/NVIM-CHEATSHEET.md` — keep that path in sync when using plain Vim.
+Optional symlink **SHORTCUTS.md** / **CONFIGURATION.md** into `~/.config/nvim/` for local reading—commands **`:NvimCheatsheet`** only open `NVIM-CHEATSHEET.md`.
 
 ---
 
-## Leader and plugin bootstrap
+## Leader & vim-plug
 
 | Setting | Value |
 |---------|--------|
 | `mapleader` / `maplocalleader` | `,` (comma) |
 
-**vim-plug** bootstraps by downloading `plug.vim` with `curl` if missing:
+**vim-plug** bootstraps by downloading **`plug.vim`** with **`curl`** if missing:
 
-- Vim: `~/.vim/autoload/plug.vim`
-- Neovim: `stdpath('data')/site/autoload/plug.vim` (usually `~/.local/share/nvim/site/autoload/plug.vim`)
+`stdpath('data')/site/autoload/plug.vim` · usually **`~/.local/share/nvim/site/autoload/plug.vim`**
 
-Neovim plugins install under `stdpath('data')/plugged` (typically `~/.local/share/nvim/plugged`).
-
-Then run `:PlugInstall` in the editor after first launch.
+Plugins install under **`stdpath('data')/plugged`** (typically **`~/.local/share/nvim/plugged`**). Run **`:PlugInstall`** after cloning.
 
 ---
 
 ## Plugins (vim-plug)
 
-| Plugin | Purpose |
-|--------|---------|
-| `tpope/vim-sensible` | Baseline sane defaults (`:help sensible`) |
-| `tpope/vim-commentary` | Comments (`gcc`, `gc` + motion) |
-| `tpope/vim-surround` | Surround edits (`ys`, `ds`, `cs`, visual `S`) |
-| `tpope/vim-repeat` | Repeat supported plugin actions with `.` |
-| `editorconfig/editorconfig-vim` | Honor `.editorconfig` |
+| Plugin | Role |
+|--------|------|
+| `tpope/vim-sensible` | Sane defaults (`:help sensible`) |
+| `tpope/vim-commentary` | Comments |
+| `tpope/vim-surround` | Surround edits |
+| `tpope/vim-repeat` | Repeat `.` for supported plugin ops |
+| `editorconfig/editorconfig-vim` | `.editorconfig` |
 | `vim-airline/vim-airline` | Status/tab line |
-| `junegunn/fzf` + `junegunn/fzf.vim` | Fuzzy finder |
+| `junegunn/fzf`, `junegunn/fzf.vim` | Fuzzy finder UI |
 | `preservim/nerdtree` | File tree |
-| `sheerun/vim-polyglot` | Many language packs / syntax files |
-| `neoclide/coc.nvim` (release) | LSP completion/diagnostics/etc. |
+| `sheerun/vim-polyglot` | Syntax packs |
+| `neoclide/coc.nvim` (release branch) | LSP / completion / diagnostics |
 
-**Neovim only:**
+**DAP stack (Lua):**
 
-| Plugin | Purpose |
-|--------|---------|
-| `mfussenegger/nvim-dap` | Debug Adapter Protocol core |
-| `nvim-neotest/nvim-nio` | Async I/O dependency for dap-ui |
-| `rcarriga/nvim-dap-ui` | Sidebar / scopes / REPL UI |
+| Plugin | Role |
+|--------|------|
+| `mfussenegger/nvim-dap` | DAP core |
+| `nvim-neotest/nvim-nio` | `dap-ui` dependency |
+| `rcarriga/nvim-dap-ui` | Sidebar / scopes / REPL |
 | `theHamsta/nvim-dap-virtual-text` | Inline values |
 | `mfussenegger/nvim-dap-python` | Python (debugpy) |
 
@@ -76,62 +73,58 @@ Then run `:PlugInstall` in the editor after first launch.
 
 ## CoC extensions (`g:coc_global_extensions`)
 
-Installed via CoC (Node required):
+Needs **Node.js**:
 
 - `coc-json`
 - `coc-clangd`
 - `coc-pyright`
 
-`nvim/coc-settings.json` customizes clangd (C++20 fallback, tidy) and Python analysis defaults.
+`nvim/coc-settings.json`: clangd (e.g. C++20 fallback, tidy), Python analysis tweaks.
 
 ---
 
-## Options set in `.vimrc` / `nvim/init.vim`
-
-Vim Classic sets `set nocompatible`; Neovim omits it (always nocompatible).
+## Options in `nvim/init.vim`
 
 | Option | Meaning (short) |
 |--------|------------------|
 | `encoding=utf-8` | UTF-8 |
-| `nomodeline` | Do not evaluate modelines (`E518`/security) |
+| `nomodeline` | Ignore modelines (avoids bogus `E518` from strings in source) |
 | `number relativenumber` | Hybrid line numbers |
-| `signcolumn=yes` | Gutter width for diagnostics |
-| `hidden` | Switch buffers without saving every time |
-| `updatetime=300` | Faster CursorHold / diagnostic refresh |
-| `mouse=a` | Mouse in all modes |
-| `hlsearch incsearch ignorecase smartcase` | Search behavior |
-| `splitbelow splitright` | Split directions |
-| `scrolloff=3` | Keep context lines above/below cursor |
-| `clipboard=unnamedplus` | System clipboard (`+`), Linux/X/Wayland |
-| `wildmenu wildmode=list:longest,full` | Enhanced command-line completion |
-| `backspace=indent,eol,start` | Backspace across indent / join lines |
-| `termguicolors` | True color (when supported) |
+| `signcolumn=yes` | Stable gutter |
+| `hidden` | Buffer switching without `:w` everywhere |
+| `updatetime=300` | Faster CoC / CursorHold-ish behavior |
+| `mouse=a` | Mouse across modes |
+| `hlsearch incsearch ignorecase smartcase` | Search UX |
+| `splitbelow splitright` | New split orientation |
+| `scrolloff=3` | Context lines around cursor |
+| `clipboard=unnamedplus` | System clipboard (`+`) |
+| `wildmenu wildmode=list:longest,full` | Cmdline completion UX |
+| `backspace=indent,eol,start` | Backspace through indent/newline |
+| `termguicolors` | True color when supported |
 
-**Indent** (via `FileType`): `c`, `cpp`, `python` → `shiftwidth`, `tabstop`, `softtabstop` **4**, `expandtab`.
+**FileType** `c` / `cpp` / `python`: **4-space** **`expandtab`**.
 
-**Airline:** `g:airline_powerline_fonts = 0`; tabline enabled.
+**Airline:** `Powerline fonts` off · tab line on.
 
 ---
 
-## Commands defined in Vimscript
+## Custom commands (`init.vim`)
 
 | Command | Action |
 |---------|--------|
-| `:CocFormat` | Format whole buffer (`CocActionAsync('format')`) |
-| `:VimCheatsheet` | Open cheatsheet Markdown (`.vimrc` copies only) |
-| `:NvimCheatsheet` | Same for Neovim (`init.vim`) |
+| `:CocFormat` | Format buffer |
+| `:NvimCheatsheet` | Split-open `NVIM-CHEATSHEET.md` |
 
-Leader mapping **`,?`** opens `NVIM-CHEATSHEET.md`.
+**`,?`** → same cheatsheet split.
 
 ---
 
 ## DAP (`nvim/lua/dap-setup.lua`)
 
-- **GDB adapter:** `gdb-multiarch` if installed, otherwise `gdb` with `--interpreter=dap` (needs **GDB 14+**).
-- **Configurations:** local launch; attach `:1234`; attach OpenOCD **`:3333`** (STM32-friendly).
-- **Python:** `dap-python` with `python3` (prefer `python3 -m debugpy`).
-- **UI:** Opens on attach/launch; closes on terminate; **dap-ui** expand/open mappings inside the sidebar (CR, mouse, etc. — see `dap-setup.lua`).
+- **Adapter:** **`gdb-multiarch`** if installed, else **`gdb`** **`--interpreter=dap`** (GDB **14+**).
+- **Configurations:** launch local exe; attach **`:1234`**; attach **OpenOCD** **`:3333`** (STM32).
+- **Python:** `dap-python` + **`python3`** (install **debugpy** as needed).
 
 ---
 
-see **SHORTCUTS.md** for every keybinding in one place.
+Depth keybinding tables: **`SHORTCUTS.md`**.

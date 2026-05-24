@@ -1,16 +1,16 @@
-# Vim / Neovim shortcuts
+# Neovim shortcuts
 
 **Leader:** `,` (comma)
 
-**Editors:** Plain **Vim** uses `~/.vimrc`; **Neovim** uses `~/.config/nvim/init.vim`. Most mappings match. **Debugging (DAP)** is **Neovim only**.
+Configs mirror **`nvim/`** in this repo into **`~/.config/nvim/`**. **nvim-dap** lives in **`lua/dap-setup.lua`**.
 
-**Open cheatsheet:** `,?` · **`:VimCheatsheet`** · **`:NvimCheatsheet`**
+**Open quick sheet:** **`,?`** · **`:NvimCheatsheet`**
 
-*(Also see `NVIM-CHEATSHEET.md` in this directory.)*
+*(Symlink **`NVIM-CHEATSHEET.md`** beside **`init.vim`**, matching this repo layout.)*
 
 ---
 
-## Built-in Vim you use every day (no plugin)
+## Core editing (Vim motions, no plugins)
 
 Motion and editing behave like standard Vim. Useful reminders:
 
@@ -148,7 +148,7 @@ Repeat supported operations with **`vim-repeat`**: **``.**
 
 ---
 
-## Neovim only — nvim-dap (`lua/dap-setup.lua`)
+## nvim-dap (`lua/dap-setup.lua`)
 
 Pick config when prompted; **STM32/OpenOCD:** GDB server **`localhost:3333`**.
 
@@ -176,7 +176,7 @@ Commands: `:DapContinue`, `:DapToggleBreakpoint`, `:DapTerminate`, `:help dap-co
 
 ## Inspect what is mapped (discovery)
 
-Inside Vim/Neovim:
+Inside Neovim:
 
 ```
 :nmap
