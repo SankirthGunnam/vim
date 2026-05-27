@@ -158,6 +158,9 @@ else
 endif
 nnoremap <leader>fb :Buffers<CR>
 
+nnoremap <silent> <leader>cp :let @+ = expand('%')<CR>:echo 'Copied relative path'<CR>
+nnoremap <silent> <leader>cpa :let @+ = expand('%:p')<CR>:echo 'Copied absolute path'<CR>
+
 " ----- fugitive (:Git) — leaders below avoid masking CoC gd / gy / gi / gr -----
 nnoremap <silent> <leader>gs :Git<CR>
 nnoremap <silent> <leader>gc :Git commit<CR>

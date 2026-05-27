@@ -74,6 +74,8 @@ Built-ins: `:DapContinue`, `:DapToggleBreakpoint`, `:help dap-commands`.
 | `Space` ff | Files (alternate) |
 | `Space` fg | Rg · else `:Lines` |
 | `Space` fb | Buffers |
+| `Space` cp | Copy relative file path (+clipboard) |
+| `Space` cpa | Copy absolute file path (+clipboard) |
 | `Space` gs / gc | `:Git` / commit |
 | `Space` gp / gl | push / pull |
 | `Space` gb / gD / gL | blame / diff / log |

@@ -83,6 +83,8 @@ Motion and editing behave like standard Vim. Useful reminders:
 | `leader` **`ff`** | `:Files` (**`<Space>ff`**, alternate to **`p`**) |
 | `leader` **`fg`** | `:Rg` (if `rg` installed) · else `:Lines` |
 | `leader` **`fb`** | `:Buffers` |
+| `leader` **`cp`** | Copy **relative** buffer path to system clipboard (`+`) |
+| `leader` **`cpa`** | Copy **absolute** buffer path to system clipboard (`+`) |
 
 `*` **Terminal note:** **`Ctrl+Shift+F`** (`:Rg`) may fail in some terminals — use **`<Space>fg`**. Fuzzy **`:Commands`** is **`<Space><S-p>`** (Space + Shift+P), or type **`:Commands`**.*
 
